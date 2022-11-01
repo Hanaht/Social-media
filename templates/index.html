@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block body %}
+{% block content %}
+<form class="form-inline"  action="create" method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="expression">expression</label>
+        <input type="text" name="expression" class="form-control" style="width:30%;" required="required"/>
+              <button type="submit" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-plus"></span> ADD</button>
+              {{result}}
+             
+    </div>
+</form>
+<br />
+
+<table class="table table-bordered">
+    <thead class="alert-warning">
+        <tr>
+            <th>expression</th>
+            <th>result</th>
+           
+        </tr>
+    </thead>
+    <tbody>
+        {% for calculatort in calculatorts %}
+        <tr>
+            <td>{{ calculatort.expression }}</td>
+            <td>{{ calculatort.results }}</td>
+           
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+
+{% endblock %}
